@@ -4,12 +4,12 @@
 #include <string_view>  // string_view
 #include <chrono>       // high_resolution_clock, duration_cast, nanoseconds
 #include <sstream>      // stringstream
-
+#include <vector>
+#include "point.hpp"
 // подключаем вашу структуру данных
-#include "graham_scan.hpp"
+
 
 using namespace std;
-using namespace itis;
 
 // абсолютный путь до набора данных и папки проекта
 static constexpr auto kDatasetPath = string_view{PROJECT_DATASET_DIR};
@@ -17,30 +17,22 @@ static constexpr auto kProjectPath = string_view{PROJECT_SOURCE_DIR};
 
 int main(int argc, char **argv) {
 
-  // Tip 1: входные аргументы позволяют более гибко контролировать работу вашей программы.
-  // Можете передать путь до входного/выходного тестового файла в качестве аргумента программы.
-
-  for (int index = 0; index < argc; index++) {
-    cout << "Arg: " << argv[index] << '\n';
-  }
-
-  // Tip 2: для перевода строки в число можете использовать функцию stoi (string to integer)
-
-  // можете использовать функционал класса stringstream для обработки строки
-  auto ss = stringstream("0 1 2");  // передаете строку (входной аргумент или строку из файла) и обрабатываете ее
-
-  int number = 0;
-  ss >> number;  // number = 0
-  ss >> number;  // number = 1
-  ss >> number;  // number = 2
-
   // работа с набором данных
   const auto path = string(kDatasetPath);
   cout << "Path to the 'dataset/' folder: " << path << endl;
 
-  auto input_file = ifstream(path + "/dataset-example.csv");
+  auto input_file = ifstream(path);
+
+  string line;
+  vector<point> vector;
 
   if (input_file) {
+    for (int i = 0; i < 10; ++i) {
+      input_file = ifstream (path + "\\data" + to_string(i) + ".csv");
+      while (getline(input_file,line,';')){
+
+      }
+    }
     // чтение и обработка набора данных ...
   }
 
