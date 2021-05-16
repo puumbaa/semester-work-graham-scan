@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 
 # Определите название вашего проекта (должно совпадать с названием репозитория).
 # Примечание: замените символ '-' на '_'.
-project(semester_work_template CXX)
+project(semester_work_graham_scan CXX)
 
 # === Определение стандарта C++ для всего проекта ===
 
@@ -35,7 +35,10 @@ target_compile_definitions(project_paths INTERFACE
 
 add_library(${PROJECT_NAME} STATIC
         src/graham_scan.cpp
-        include/graham_scan.hpp include/point.hpp include/my_vector.hpp)
+        include/graham_scan.hpp
+        include/point.hpp
+        include/my_vector.hpp
+        main.cpp)
 
 # включить предупреждения компилятора для библиотеки (линковка)
 target_link_libraries(${PROJECT_NAME} PRIVATE project_warnings)

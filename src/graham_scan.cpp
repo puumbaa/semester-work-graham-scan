@@ -2,13 +2,14 @@
 #include <algorithm>
 #include "point.hpp"
 #include "my_vector.hpp"
+#include "graham_scan.hpp"
 using namespace std;
 
 namespace itis {
 
 
   int cross(my_vector a, my_vector b) {
-    return a.x * b.y - a.y * b.x;
+    return a.getX() * b.getY() - a.getY() * b.getX();
   }
 
   std::vector<point> get_convex_hull(std::vector<point> points) {
@@ -16,7 +17,7 @@ namespace itis {
     //   Первый этап
 
     for (int i = 1; i < points.size(); ++i) {
-      if (points[i].x < points[0].x || points[i].x == points[0].x && points[i].y < points[0].y) {
+      if (points[i].getX() < points[0].getX() || points[i].getX() == points[0].getX() && points[i].getY() < points[0].getY()) {
         swap(points[i], points[0]);
       }
     }
