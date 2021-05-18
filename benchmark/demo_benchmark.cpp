@@ -24,10 +24,19 @@ int main() {
   string line;
   string line_item;
   std::vector<point> testVector;
-
+  int num = 0;
   for (int i = 1; i < 8; ++i) {
-    input_file = ifstream(path + "\\dataset" + to_string(i) + ".csv");
-    cout<<"dataset: " + to_string(i)<<endl;
+    switch (i) {
+      case 1: num = 100; break;
+      case 2: num = 1000; break;
+      case 3: num = 5000; break;
+      case 4: num = 10000; break;
+      case 5: num = 50000; break;
+      case 6: num = 100000; break;
+      case 7: num = 500000; break;
+    }
+    input_file = ifstream(path + "\\dataset" + to_string(num) + ".csv");
+    cout << "dataset: " + to_string(i) << endl;
 
     // Парсинг строеки и заполнение входного вектора
     while (getline(input_file, line, ';')) {
@@ -54,7 +63,7 @@ int main() {
       const auto time_diff = time_point_after - time_point_before;
       const auto time_elapsed_ns = chrono::duration_cast<chrono::nanoseconds>(time_diff).count();
 
-      cout <<to_string(j) + ") Time (ms): " << time_elapsed_ns / 1000000 << '\n';
+      cout << to_string(j) + ") Time (ms): " << time_elapsed_ns / 1000000 << '\n';
     }
   }
   testVector.clear();
